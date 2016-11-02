@@ -1,9 +1,15 @@
 require "test_helper"
 
-describe Org do
-  let(:org) { Org.new }
+describe "Org" do
 
-  it "must be valid" do
-    value(org).must_be :valid?
+  subject { Org }
+
+  describe "associations" do
+
+    specify "has many" do
+
+      must_have_many(:articles)
+      must_have_many(:comments)
+    end
   end
 end

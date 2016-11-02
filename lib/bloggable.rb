@@ -1,5 +1,5 @@
 require "bloggable/engine"
 
 module Bloggable
-  # Your code goes here...
+  require 'aasm'
 end

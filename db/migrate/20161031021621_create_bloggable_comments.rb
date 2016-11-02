@@ -8,6 +8,6 @@ class CreateBloggableComments < ActiveRecord::Migration[5.0]
       t.timestamps
     end
 
-    add_index :bloggable_comments, :commenter_id
+    add_index :bloggable_comments, [:article_id, :commenter_id]
   end
 end

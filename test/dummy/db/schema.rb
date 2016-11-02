@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161031071545) do
+ActiveRecord::Schema.define(version: 20161101200328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20161031071545) do
     t.string   "bloggable_type"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.string   "aasm_state"
     t.index ["bloggable_id", "bloggable_type"], name: "bloggable", using: :btree
     t.index ["slug"], name: "index_bloggable_articles_on_slug", using: :btree
     t.index ["title"], name: "index_bloggable_articles_on_title", using: :btree
@@ -35,7 +36,7 @@ ActiveRecord::Schema.define(version: 20161031071545) do
     t.integer  "commenter_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["commenter_id"], name: "index_bloggable_comments_on_commenter_id", using: :btree
+    t.index ["article_id", "commenter_id"], name: "index_bloggable_comments_on_article_id_and_commenter_id", using: :btree
   end
 
   create_table "orgs", force: :cascade do |t|

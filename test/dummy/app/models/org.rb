@@ -1,3 +1,5 @@
 class Org < ApplicationRecord
-  has_many :bloggable_articles, as: :bloggable
+
+  include Blogify
+  # has_many :articles, as: :bloggable, touch: true
 end

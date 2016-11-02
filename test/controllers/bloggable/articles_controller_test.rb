@@ -4,7 +4,8 @@ module Bloggable
   class ArticlesControllerTest < ActionDispatch::IntegrationTest
     include Engine.routes.url_helpers
 
-    # let(:article) { FactoryGirl.create(:article) }
+    let(:org) { FactoryGirl.create(:org) }
+    let(:article) { FactoryGirl.create(:article) }
 
     describe "GET :index" do
 
@@ -20,16 +21,24 @@ module Bloggable
 
     describe "PUT :create" do
 
-      Given(:article_attrs) { FactoryGirl.attributes_for(:article, author_id: 1, bloggable_id: 1, bloggable_type: "Org") }
+      Given(:attrs) { FactoryGirl.attributes_for(:article) }
+      Given(:make_request) { post articles_url, params: { article: attrs }, headers: { "HTTP_REFERER" => http_referrer } }
 
-      Given(:make_request) {
-        post articles_url, params: {
-          article: article_attrs
+      describe "from normal url" do
 
-        }
-      }
+        When(:http_referrer) { "http://example.com/articles/new" }
 
-      Then { assert_difference('Article.count') { make_request } }
+        Then { assert_difference('Article.count') { make_request } }
+        And { Article.last.bloggable_type.must_equal "User"}
+      end
+
+      describe "from bloggable nested url" do
+
+        When(:http_referrer) { "http://example.com/orgs/1/articles/new" }
+
+        Then { assert_difference('Article.count') { make_request } }
+        And { Article.last.bloggable_type.must_equal "Org"}
+      end
     end
   end
 end

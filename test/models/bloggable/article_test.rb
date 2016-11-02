@@ -35,11 +35,4 @@ describe "Bloggable::Article" do
       must_have_many :comments
     end
   end
-
-  describe "validations" do
-
-    Given(:article) { FactoryGirl.create(:article) }\
-
-    Then { article.must_equal "blah"}
-  end
 end
