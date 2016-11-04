@@ -8,6 +8,7 @@ module Bloggable
     belongs_to :author, class_name: "User", optional: true
 
     has_many :comments, dependent: :destroy
+    # has_many :photos, class_name: "Galleriable::Photo"
 
     default_scope { order("created_at desc") }
 

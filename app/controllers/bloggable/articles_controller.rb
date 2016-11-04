@@ -6,7 +6,6 @@ module Bloggable
 
     before_action :set_article, only: [:show, :edit, :update, :destroy]
     before_action :set_bloggable, only: :create
-    before_action :authenticate_user!, except: [:show, :index]
 
 
     def index

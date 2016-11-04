@@ -10,6 +10,7 @@ require "rails/test_help"
 require "minitest/rails/capybara"
 require "minitest/given"
 require "byebug"
+require "factory_girl_rails"
 
 
 # Filter out Minitest backtrace while allowing backtrace from other libraries
@@ -26,5 +27,7 @@ if ActiveSupport::TestCase.respond_to?(:fixture_path=)
 end
 
 
-require "factory_girl_rails"
 include TestMatchers
+include FactoryGirl::Syntax::Methods
+include Warden::Test::Helpers
+

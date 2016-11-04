@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :orgs do
     resources :articles, controller: 'bloggable/articles'
   end
+  resources :articles
   resources :users
 end
