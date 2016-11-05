@@ -1,11 +1,12 @@
-require_dependency "bloggable/application_controller"
+# require_dependency "bloggable/application_controller"
 
 module Bloggable
 
-  class ArticlesController < ApplicationController
+  class ArticlesController < ::ApplicationController
 
     before_action :set_article, only: [:show, :edit, :update, :destroy]
     before_action :set_bloggable, only: :create
+    before_action :authenticate_user!, except: [:show, :index]
 
 
     def index

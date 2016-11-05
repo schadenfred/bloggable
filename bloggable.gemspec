@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.description = "Add a blog to orgs or users or whatever"
   s.license     = "MIT"
 
-  s.files = Dir["{app,config,db,lib}/**/*", "test/factories/**/*", "LICENSE", "Rakefile", "README.md"]
+  s.files = Dir["{app,config,db,lib}/**/*", "test/factories/**/*", "test/dummy/test/factories/*.rb" "LICENSE", "Rakefile", "README.md"]
 
   s.add_dependency "rails", "~> 5.0.0", ">= 5.0.0.1"
   s.add_dependency "jquery-ui-rails"

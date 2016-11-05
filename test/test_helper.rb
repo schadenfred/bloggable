@@ -11,6 +11,8 @@ require "minitest/rails/capybara"
 require "minitest/given"
 require "byebug"
 require "factory_girl_rails"
+require 'database_cleaner'
+
 
 
 # Filter out Minitest backtrace while allowing backtrace from other libraries
@@ -30,4 +32,26 @@ end
 include TestMatchers
 include FactoryGirl::Syntax::Methods
 include Warden::Test::Helpers
+
+DatabaseCleaner.strategy = :deletion
+
+class Minitest::Spec
+  before :each do
+    DatabaseCleaner.start
+  end
+
+  # after { Warden.test_reset! }
+  after :each do
+    DatabaseCleaner.clean
+    Warden.test_reset!
+  end
+end
+
+# # with the minitest-around gem, this may be used instead:
+# class Minitest::Spec
+#   around do |tests|
+#     DatabaseCleaner.cleaning(&tests)
+#   end
+# end
+
 
