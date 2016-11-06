@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency "simple_form"
   s.add_dependency "friendly_id"
   s.add_dependency "aasm"
-  s.add_dependency "devise"
+  # s.add_dependency "devise"
 
 
   s.add_dependency "factory_girl_rails"

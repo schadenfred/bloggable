@@ -17,7 +17,6 @@ PATH
     bloggable (0.1.0)
       aasm
       byebug
-      devise
       factory_girl_rails
       friendly_id
       haml-rails
