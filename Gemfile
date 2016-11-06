@@ -12,6 +12,8 @@ gem 'haml-rails'
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
 gem 'devise'
+# gem 'galleriable', path: '~/work/opensource/engines/galleriable/galleriable'
+gem 'galleriable', github: 'schadenfred/galleriable'#, require: false
 
 
 group :development, :test do
